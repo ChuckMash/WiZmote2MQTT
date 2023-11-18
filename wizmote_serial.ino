@@ -18,7 +18,7 @@ uint8_t holder      [50];               // Data blob used as fingerprint history
 // Authenticates, de-duplicates, and allows for multiple WiZmotes to be used simultaniously
 #ifdef ESP8266 
  void rarify_receive(uint8_t * bssid, uint8_t *dat, uint8_t len) {
-#else
+#else // ESP32
  void rarify_receive(const uint8_t * bssid, const uint8_t *dat, int len) {
 #endif
 
