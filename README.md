@@ -19,7 +19,7 @@ wizmote2mqtt runs on ESP8266 or ESP32
 
 ---
 
-Uses WiZmote Button codes
+Publishes WiZmote Button codes
 | Button | Button Code|
 |-------|------------|
 | ON    | 1          |
