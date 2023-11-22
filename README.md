@@ -19,7 +19,11 @@ wizmote2mqtt runs on ESP8266 or ESP32
 
 ---
 
-Publishes WiZmote Button codes
+### Topics
+
+Device Status (online/offline): wizmote/wizmote2mqtt-xxxxxxxxxxxx (ESP Mac Address)
+
+Publishes received WiZmote Button codes to wizmote/wizmote-xxxxxxxxxxxx (WiZmote BSSID)
 | Button | Button Code|
 |-------|------------|
 | ON    | 1          |
@@ -32,5 +36,6 @@ Publishes WiZmote Button codes
 | -     | 8          |
 | +     | 9          |
 
+---
 
 
