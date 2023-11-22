@@ -4,7 +4,7 @@ wizmote2mqtt runs on ESP8266 or ESP32
 ---
 * Relays WiZmote button presses to MQTT
 * Can use multiple WiZmotes simultaneously
-* Can deploy multiple WiZmote2MQTT devices/receivers without clashing
+* Easy to use with Home Assistant
 * Uses EspMQTTClient for high reliability
 * Activity Indicator LED
 * Also sends JSON messages over Serial when WiZmote button pressed
