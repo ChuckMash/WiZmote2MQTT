@@ -1,3 +1,4 @@
+user@unknown:/tmp$ cat a.py 
 import serial
 import json
 
@@ -25,9 +26,12 @@ class wizmote:
 
   def read(self):
     try:
-      return json.loads(self.ser.read_until(b"\n").decode())
+      data = self.ser.read_until(b"\n")
+      data = data.decode().strip()
+      return json.loads(data)
     except Exception as e:
-      print("Error decoding data:", e)
+      #print("Error decoding data:", e)
+      print(data)
       return False
 
 
