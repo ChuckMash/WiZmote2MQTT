@@ -10,7 +10,7 @@ EspMQTTClient client(
   1883            // MQTT Port 
 );
 
-uint8_t allow[]={0x44,0x4f,0x8e}; // Allowed WiZmote bssid  prefix, can be extended to full bssid. 44:4f:83:xx:xx:xx
+uint8_t allow[]={0x44,0x4f,0x8e}; // Allowed WiZmote bssid prefix, can be extended to full bssid. 44:4f:83:xx:xx:xx
 uint8_t fingerprint[10];          // Fingerprint of sender bssid + message id
 char         bssid_[16];          // Holds sender bssid
 uint8_t      holder[50];          // Data blob used as fingerprint history, must be sized in multiples of fingerpint. 50 = 5 fingerprints
@@ -52,9 +52,6 @@ void on_receive(char* bssid, uint8_t battery, uint32_t mid, uint8_t btnc){
 void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
-
-  pinMode(BUILTIN_LED, OUTPUT); 
-  digitalWrite(BUILTIN_LED, !activity);
   
   if(esp_now_init()!=0){return;}               // Quit if error intitlizing ESP-NOW
 
@@ -70,12 +67,15 @@ void setup() {
 
   WiFi.macAddress(holder);                     // Use holder to temporarily store mac address for processing
 
-  snprintf(client_id, sizeof(client_id), "%s-%02x%02x%02x%02x%02x%02x",client.getMqttClientName(),holder[0],holder[1],holder[2],holder[3],holder[4],holder[5]); // Create client id
+  snprintf(client_id,  sizeof(client_id),  "%s-%02x%02x%02x%02x%02x%02x",client.getMqttClientName(),holder[0],holder[1],holder[2],holder[3],holder[4],holder[5]); // Create client id
   snprintf(will_topic, sizeof(will_topic), "wizmote/%s", client_id); // Create the will topic
 
   client.setMqttClientName(client_id);                       // Set the MQTT client id
-  client.enableDebuggingMessages();                          // Enable debugging messages over serial
+  client.enableDebuggingMessages();                        // Enable debugging messages over serial
   client.enableLastWillMessage(will_topic, "offline", true); // Enable persistant will message
+
+  pinMode(BUILTIN_LED, OUTPUT);         // Activity indicator LED 
+  digitalWrite(BUILTIN_LED, !activity);
 }
 
 
