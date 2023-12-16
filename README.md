@@ -2,7 +2,7 @@
 
 wizmote2mqtt runs on ESP8266 or ESP32
 ---
-Works with out-of-the-box WiZMotes with no modification required
+Works with out-of-the-box WiZmotes with no modification required
 ---
 * Relays WiZmote button presses to MQTT
 * Can use multiple WiZmotes simultaneously
