@@ -1,4 +1,3 @@
-user@unknown:/tmp$ cat a.py 
 import serial
 import json
 
